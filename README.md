@@ -1,6 +1,6 @@
 # Decodificador de Texto
 
-Este projeto é um decodificador de texto desenvolvido como conclusão da trilha iniciante em programação da Alura, em parceria com a Oracle. Ele permite que você codifique e decodifique textos utilizando um mapeamento específico de letras.
+Este projeto é um decodificador de texto desenvolvido como conclusão da formação "iniciante em programação" do programa ONE, uma parceria Alura e Oracle. Ele permite que você codifique e decodifique textos utilizando um mapeamento específico de letras.
 
 ## Funcionalidades
 
