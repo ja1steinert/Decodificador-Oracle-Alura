@@ -49,3 +49,7 @@ E as substituições inversas são realizadas durante a decodificação.
 ### Entrada
 gato
 
+### Saída Codificada
+gaitober
+
+##
