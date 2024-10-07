@@ -1,15 +1,15 @@
+// Lista usada pelas funções "encodeText" e "decodeText", determina as substituicoes.
+const letterMapping = {
+    a: "ai",
+    e: "enter",
+    i: "imes",
+    o: "ober",
+    u: "ufat"
+} 
+
 function encodeText(text) {
-
-    const letterMapping = {
-        a: "ai",
-        e: "enter",
-        i: "imes",
-        o: "ober",
-        u: "ufat"
-    }
-
-    // Variável vazia que é incrementada com letras do texto fornecido.
     let encodedTxt = "";
+    
     for (char of text) {
         /* Substitui letras do texto original pelos valores correspondentes em letterMapping,
            mantendo letras não mapeadas inalteradas. */
@@ -25,32 +25,30 @@ function encodeText(text) {
     return encodedTxt;
 }
 
-/* Função que decodifica um texto codificado, percorrendo uma lista de letras 
-   e pulando um número específico de índices para decodificar cada letra. */
 function decodeText(text) {
-    // String vazia para armazenar o texto decodificado.
     let decodedTxt = "";
-    // Lista contendo todas as letras do texto codificado.
-    let letters = text.split("");
+    let i = 0;
 
-    /* Loop que percorre cada letra do texto codificado e decodifica 
-       seguindo as regras especificadas para cada letra. */
-    for (i = 0; i < letters.length; i++) {
-        if (letters[i] == "a") {
-            decodedTxt += letters[i];
-            i += 1;
-        } else if (letters[i] == "e") {
-            decodedTxt += letters[i];
-            i += 4;
-        } else if (letters[i] == "i" || letters[i] == "o" || letters[i] == "u") {
-            decodedTxt += letters[i];
-            i += 3;
-        } else {
-            decodedTxt += letters[i];
+    while (i < text.length) {
+        let matched = false;
+        
+        // Verifica se uma substring começa com alguma das codificações
+        for (const key in letterMapping) {
+            if (text.startsWith(letterMapping[key], i)) {
+                decodedTxt += key;
+                i += letterMapping[key].length;
+                matched = true;
+                break;
+            }
+        }
+
+        // Se não houver correspondência, adiciona o caractere atual
+        if (!matched) {
+            decodedTxt += text[i];
+            i++;
         }
     }
 
-    // Retorna o texto decodificado após processamento.
     return decodedTxt;
 }
 
